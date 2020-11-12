@@ -20,6 +20,10 @@ namespace Proiect_PIU
         private void Form1_Load(object sender, EventArgs e)
         {
             //asfsdfdsfsdfsddsfgsdfgdfsg
+
+            ////commit 2
+            /////commit 2
+            //////commit 2
         }
     }
 }
