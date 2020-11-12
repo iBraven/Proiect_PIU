@@ -17,6 +17,9 @@ namespace Proiect_PIU
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
+            // comm test commit -> push
+            var com = 1;
+
         }
     }
 }
