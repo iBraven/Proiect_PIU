@@ -18,8 +18,9 @@ namespace Proiect_PIU
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LoginForm());
             // comm test commit -> push
-            var com = 1;
-
+            //var com = 1;
+            //comm
+            //comm2
         }
     }
 }

@@ -78,23 +78,24 @@ namespace Proiect_PIU
             this.passwordLabel.Location = new Point(150, 155);
 
 
-            loginPicture.Image = Image.FromFile(@"D:\Facultate\Facultate\An4\SEM1\PIU\proiect\WindowsFormsApp1\login.jpg");
+            //loginPicture.Image = Image.FromFile(@"..\Resurse\");
             loginPicture.SizeMode = PictureBoxSizeMode.AutoSize;
             loginPicture.Location = new Point(20, 90);
 
-
+            
             this.Controls.Add(usernameBox);
             this.Controls.Add(passwordBox);
             this.Controls.Add(btnLogin);
             this.Controls.Add(welcomeLabel);
             this.Controls.Add(usernameLabel);
             this.Controls.Add(passwordLabel);
-            this.Controls.Add(loginPicture);
+            //this.Controls.Add(loginPicture);
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
             this.Hide();
+
             Form2 f2 = new Form2();
             f2.Show();
         }
