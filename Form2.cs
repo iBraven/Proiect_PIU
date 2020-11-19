@@ -58,6 +58,7 @@ namespace Proiect_PIU
             this.Controls.Add(companyLabel);
             this.Controls.Add(companyCbx);
             this.Controls.Add(btnSave);
+            //ANDREI
         }
 
         private void btnSave_Click(object sender, EventArgs e)
