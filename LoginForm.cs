@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Proiect_PIU
 {
-    public partial class Form1 : Form
+    public partial class LoginForm : Form
     {
         private TextBox usernameBox = new TextBox();
         private TextBox passwordBox = new TextBox();
@@ -22,7 +22,7 @@ namespace Proiect_PIU
 
 
 
-        public Form1()
+        public LoginForm()
         {
             InitializeComponent();
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -94,7 +94,9 @@ namespace Proiect_PIU
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("logged");
+            this.Hide();
+            Form2 f2 = new Form2();
+            f2.Show();
         }
 
     }

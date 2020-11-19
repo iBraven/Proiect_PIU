@@ -16,7 +16,7 @@ namespace Proiect_PIU
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new LoginForm());
             // comm test commit -> push
             var com = 1;
 
