@@ -26,6 +26,12 @@ namespace Proiect_PIU
         private ComboBox displayCbx = new ComboBox();
         private Label fingerprintLabel = new Label();
         private ComboBox fingerprintCbx = new ComboBox();
+        private Label rearCameraLabel = new Label();
+        private ComboBox rearCameraCbx = new ComboBox();
+        private Label frontCameraLabel = new Label();
+        private ComboBox frontCameraCbx = new ComboBox();
+        private Label priceLabel = new Label();
+        private ComboBox priceCbx = new ComboBox();
         private Button btnSave = new Button();
         private Button btnSpecs = new Button();
 
@@ -144,9 +150,43 @@ namespace Proiect_PIU
             this.fingerprintCbx.AutoCompleteSource = AutoCompleteSource.ListItems;
 
             //rear camera
-            //front camera
-            //price
+            this.rearCameraLabel.Location = new Point(700, 140);
+            this.rearCameraLabel.Size = new Size(200, 20);
+            this.rearCameraLabel.Text = "Rear camera: ";
+            this.rearCameraLabel.Font = labelFont;
 
+            this.rearCameraCbx.Location = new Point(700, 170);
+            this.rearCameraCbx.Name = "Rear camera";
+            this.rearCameraCbx.Size = new Size(200, 50);
+            this.rearCameraCbx.Font = cbxFont;
+            this.rearCameraCbx.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            this.rearCameraCbx.AutoCompleteSource = AutoCompleteSource.ListItems;
+
+            //front camera
+            this.frontCameraLabel.Location = new Point(700, 250);
+            this.frontCameraLabel.Size = new Size(200, 20);
+            this.frontCameraLabel.Text = "Front camera: ";
+            this.frontCameraLabel.Font = labelFont;
+
+            this.frontCameraCbx.Location = new Point(700, 280);
+            this.frontCameraCbx.Name = "Front camera";
+            this.frontCameraCbx.Size = new Size(200, 50);
+            this.frontCameraCbx.Font = cbxFont;
+            this.frontCameraCbx.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            this.frontCameraCbx.AutoCompleteSource = AutoCompleteSource.ListItems;
+
+            //price
+            this.priceLabel.Location = new Point(700, 360);
+            this.priceLabel.Size = new Size(200, 20);
+            this.priceLabel.Text = "Price: ";
+            this.priceLabel.Font = labelFont;
+
+            this.priceCbx.Location = new Point(700, 390);
+            this.priceCbx.Name = "Price";
+            this.priceCbx.Size = new Size(200, 50);
+            this.priceCbx.Font = cbxFont;
+            this.priceCbx.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            this.priceCbx.AutoCompleteSource = AutoCompleteSource.ListItems;
 
             this.btnSpecs.Location = new Point((this.Width - btnSpecs.Width) / 2, 100);
             this.btnSpecs.Text = "Select specs";
@@ -176,6 +216,12 @@ namespace Proiect_PIU
             this.Controls.Add(displayCbx);
             this.Controls.Add(fingerprintLabel);
             this.Controls.Add(fingerprintCbx);
+            this.Controls.Add(rearCameraLabel);
+            this.Controls.Add(rearCameraCbx);
+            this.Controls.Add(frontCameraLabel);
+            this.Controls.Add(frontCameraCbx);
+            this.Controls.Add(priceLabel);
+            this.Controls.Add(priceCbx);
             this.Controls.Add(btnSave);
             this.Controls.Add(btnSpecs);
         }
@@ -205,6 +251,21 @@ namespace Proiect_PIU
 
                 this.fingerprintCbx.Items.Add("Yes");
                 this.fingerprintCbx.Items.Add("No");
+
+                this.rearCameraCbx.Items.Add("4 MP");
+                this.rearCameraCbx.Items.Add("8 MP");
+                this.rearCameraCbx.Items.Add("12 MP");
+                this.rearCameraCbx.Items.Add("16 MP");
+                this.rearCameraCbx.Items.Add("32 MP");
+
+                this.frontCameraCbx.Items.Add("4 MP");
+                this.frontCameraCbx.Items.Add("8 MP");
+                this.frontCameraCbx.Items.Add("12 MP");
+
+                this.priceCbx.Items.Add("3250");
+                this.priceCbx.Items.Add("4000");
+                this.priceCbx.Items.Add("2000");
+                this.priceCbx.Items.Add("2500");
             }
             else if (this.productTypeCbx.Text == "Laptop")
             {
@@ -227,6 +288,10 @@ namespace Proiect_PIU
 
                 this.fingerprintCbx.Items.Add("Yes");
                 this.fingerprintCbx.Items.Add("No");
+
+                this.priceCbx.Items.Add("3250");
+                this.priceCbx.Items.Add("2800");
+                this.priceCbx.Items.Add("7499");
             }
             else
             {
@@ -273,6 +338,9 @@ namespace Proiect_PIU
             this.ramCbx.Items.Clear();
             this.displayCbx.Items.Clear();
             this.fingerprintCbx.Items.Clear();
+            this.rearCameraCbx.Items.Clear();
+            this.frontCameraCbx.Items.Clear();
+            this.priceCbx.Items.Clear();
         }
 
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)

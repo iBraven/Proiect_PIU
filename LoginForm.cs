@@ -78,7 +78,7 @@ namespace Proiect_PIU
             this.passwordLabel.Location = new Point(150, 155);
 
 
-            //loginPicture.Image = Image.FromFile(@"..\Resurse\");
+            //loginPicture.Image = Image.FromFile(@"D:\Facultate\Facultate\An4\SEM1\PIU\Proiect_PIU\Properties\login.jpg");
             loginPicture.SizeMode = PictureBoxSizeMode.AutoSize;
             loginPicture.Location = new Point(20, 90);
 
