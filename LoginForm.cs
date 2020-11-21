@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Proiect_PIU
@@ -25,7 +20,7 @@ namespace Proiect_PIU
         public LoginForm()
         {
             InitializeComponent();
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            this.btnLogin.Click += new EventHandler(this.btnLogin_Click);
 
         }
 
@@ -34,7 +29,7 @@ namespace Proiect_PIU
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.BackColor = Color.NavajoWhite;
-            this.Size = new System.Drawing.Size(500, 350);
+            this.Size = new Size(500, 350);
             this.Text = "Login";
             this.CenterToScreen();
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -79,6 +74,8 @@ namespace Proiect_PIU
 
 
             //loginPicture.Image = Image.FromFile(@"D:\Facultate\Facultate\An4\SEM1\PIU\Proiect_PIU\Properties\login.jpg");
+            string path = Path.Combine(Environment.CurrentDirectory, @"..\..\Resources\", "login.png");
+            loginPicture.Image = Image.FromFile(path);
             loginPicture.SizeMode = PictureBoxSizeMode.AutoSize;
             loginPicture.Location = new Point(20, 90);
 
@@ -89,7 +86,24 @@ namespace Proiect_PIU
             this.Controls.Add(welcomeLabel);
             this.Controls.Add(usernameLabel);
             this.Controls.Add(passwordLabel);
-            //this.Controls.Add(loginPicture);
+            this.Controls.Add(loginPicture);
+
+
+            //conectare LOGIN cu baza de date
+            /*SqlConnection connection = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename = C:\Users\Andrei Gurzun\Documents\Data.mdf; Integrated Security = True; Connect Timeout = 30");
+            SqlDataAdapter sqlDataAdapter = new SqlDataAdapter("SELECT (*) FROM LOGIN WHERE Username '" + this.usernameBox.Text + "' and Password = '" + this.passwordBox.Text + "'", connection);
+            DataTable dataTable = new DataTable();
+            sqlDataAdapter.Fill(dataTable);
+            if(dataTable.Rows[0][0].ToString() == "1")
+            {
+                this.Hide();
+                MessageBox.Show("Welcome to the IT store management");
+            }
+            else
+            {
+                MessageBox.Show("Wrong username or password. Please enter the data correctly!");
+            }
+            */
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -98,6 +112,8 @@ namespace Proiect_PIU
 
             Form2 f2 = new Form2();
             f2.Show();
+            //Customers c = new Customers();
+            //c.Show();
         }
 
     }
