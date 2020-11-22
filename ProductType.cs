@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace Proiect_PIU
 {
-    public partial class Form2 : Form
+    public partial class ProductType : Form
     {
         private Label companyLabel = new Label();
         private ComboBox companyCbx = new ComboBox();
@@ -29,7 +29,7 @@ namespace Proiect_PIU
         private Button btnSave = new Button();
         private Button btnSpecs = new Button();
 
-        public Form2()
+        public ProductType()
         {
             InitializeComponent();
 
