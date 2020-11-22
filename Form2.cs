@@ -43,7 +43,8 @@ namespace Proiect_PIU
             this.StartPosition = FormStartPosition.CenterScreen;
             this.Size = new Size(1300, 750);
             this.CenterToParent();
-            this.BackColor = Color.NavajoWhite;
+            //this.BackColor = Color.NavajoWhite;
+            this.BackColor = Color.MediumAquamarine;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
 
             //titlu la form AddItem
@@ -196,11 +197,13 @@ namespace Proiect_PIU
             this.btnSave.FlatAppearance.BorderSize = 1;
 
             this.btnSave.Location = new Point(800, 500);
-            this.btnSave.Size = new Size(100, 30);
+            this.btnSave.Size = new Size(125, 40);
             this.btnSave.Text = "Save";
             this.btnSave.FlatStyle = FlatStyle.Flat;
             this.btnSave.FlatAppearance.BorderColor = Color.Black;
             this.btnSave.FlatAppearance.BorderSize = 1;
+            Image buttonBackground = Image.FromFile(@"..\..\Resources\butonBackground.jfif");
+            this.btnSave.BackgroundImage = buttonBackground;
 
             this.Controls.Add(productTypeLabel);
             this.Controls.Add(productTypeCbx);

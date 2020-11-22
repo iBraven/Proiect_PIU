@@ -2,6 +2,8 @@
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 
 namespace Proiect_PIU
 {
@@ -24,6 +26,7 @@ namespace Proiect_PIU
         private Label testLabel = new Label();
 
         private Button btnAddInvoice = new Button();
+        private Button btnSaveInvoice = new Button();
         private Label title = new Label();
         private PictureBox customersPicture = new PictureBox();
 
@@ -34,6 +37,7 @@ namespace Proiect_PIU
             InitializeComponent();
             this.btnAddInvoice.Click += new EventHandler(this.BtnAddInvoice_Click);
             this.invoicePanel.Paint += new PaintEventHandler(this.InvoicePanel_Paint);
+            this.btnSaveInvoice.Click += new EventHandler(this.BtnSaveInvoice_Click);
         }
 
         private void Customers_Load(object sender, EventArgs e)
@@ -41,16 +45,17 @@ namespace Proiect_PIU
             this.StartPosition = FormStartPosition.CenterScreen;
             this.Size = new Size(1350, 750);
             this.CenterToParent();
-            this.BackColor = Color.NavajoWhite;
+            //this.BackColor = Color.NavajoWhite;
+            this.BackColor = Color.MediumAquamarine;
 
-            Font textboxFont = new Font("Times New Roman", 14.0f);
-            Font labelFont = new Font("Times New Roman", 16.0f);
-            Font customerLabelFont = new Font("Times New Roman", 25);
-            Font btnFont = new Font("Times New Roman", 15.0f);
+            System.Drawing.Font textboxFont = new System.Drawing.Font("Times New Roman", 14.0f);
+            System.Drawing.Font labelFont = new System.Drawing.Font("Times New Roman", 16.0f);
+            System.Drawing.Font customerLabelFont = new System.Drawing.Font("Times New Roman", 25);
+            System.Drawing.Font btnFont = new System.Drawing.Font("Times New Roman", 15.0f);
 
             //title
             string path = Path.Combine(Environment.CurrentDirectory, @"..\..\Resources\", "customer.png");
-            customersPicture.Image = Image.FromFile(path);
+            customersPicture.Image = System.Drawing.Image.FromFile(path);
             customersPicture.SizeMode = PictureBoxSizeMode.AutoSize;
             customersPicture.Location = new Point(20, 90);
 
@@ -111,12 +116,15 @@ namespace Proiect_PIU
 
             //btnAddInvoice
             this.btnAddInvoice.Location = new Point(450, 260);
-            this.btnAddInvoice.Text = "Add info "+ '\u2192';
+            this.btnAddInvoice.Text = "Add info " + '\u2192';
             this.btnAddInvoice.AutoSize = true;
             this.btnAddInvoice.FlatStyle = FlatStyle.Flat;
             this.btnAddInvoice.FlatAppearance.BorderColor = Color.Black;
             this.btnAddInvoice.FlatAppearance.BorderSize = 1;
             this.btnAddInvoice.Font = btnFont;
+            System.Drawing.Image buttonBackground = System.Drawing.Image.FromFile(@"..\..\Resources\butonBackground.jfif");
+            this.btnAddInvoice.BackgroundImage = buttonBackground;
+
 
             //image
             this.customersPicture.Location = new Point(475, 20);
@@ -125,13 +133,22 @@ namespace Proiect_PIU
             this.invoicePanel.Location = new Point(600, 140);
             this.invoicePanel.Size = new Size(650, 450);
 
-            //testLabel
+            //antetLabel for Invoice
             this.invoicePanel.Visible = true;
-            this.testLabel.Text = "testtesttest";
-            this.testLabel.Location = new Point(1, 1);
+            this.testLabel.Text = "INVOICE";
+            this.testLabel.Location = new Point(300, 70);
             this.invoicePanel.Controls.Add(testLabel);
 
-            //OUTPUT list
+
+            //btnSaveInvoice
+            this.btnSaveInvoice.Location = new Point(1125, 625);
+            this.btnSaveInvoice.Size = new Size(125, 40);
+            this.btnSaveInvoice.Text = "Save";
+            this.btnSaveInvoice.FlatStyle = FlatStyle.Flat;
+            this.btnSaveInvoice.FlatAppearance.BorderColor = Color.Black;
+            this.btnSaveInvoice.FlatAppearance.BorderSize = 1;
+            this.btnSaveInvoice.Font = btnFont;
+            this.btnSaveInvoice.BackgroundImage = buttonBackground;
 
 
             this.Controls.Add(name);
@@ -148,6 +165,7 @@ namespace Proiect_PIU
             this.Controls.Add(customersPicture);
             this.Controls.Add(btnAddInvoice);
             this.Controls.Add(invoicePanel);
+            this.Controls.Add(btnSaveInvoice);
         }
 
         private void BtnAddInvoice_Click(object sender, EventArgs e)
@@ -155,14 +173,30 @@ namespace Proiect_PIU
             MessageBox.Show("The invoice has been generated");
         }
 
+        private void BtnSaveInvoice_Click(object sender, EventArgs e)
+        {
+            //generare un document PDF in folderul InvoicePDF cu factura salvata
+            Document document = new Document();
+            PdfWriter.GetInstance(document, new FileStream(@"..\..\InvoicePDF\invoice.pdf", FileMode.Create));
+            document.Open();
+            Paragraph p = new Paragraph(this.testLabel.Text);
+            document.Add(p);
+            document.Close();
+            MessageBox.Show("Invoice saved successfully");
+        }
+
         private void InvoicePanel_Paint(object sender, PaintEventArgs e)
         {
             ControlPaint.DrawBorder(e.Graphics, invoicePanel.ClientRectangle,
-               Color.Black, 1, ButtonBorderStyle.Solid, // left
-               Color.Black, 1, ButtonBorderStyle.Solid, // top
-               Color.Black, 1, ButtonBorderStyle.Solid, // right
-               Color.Black, 1, ButtonBorderStyle.Solid);// bottom
+            Color.Black, 1, ButtonBorderStyle.Solid, // left
+            Color.Black, 1, ButtonBorderStyle.Solid, // top
+            Color.Black, 1, ButtonBorderStyle.Solid, // right
+            Color.Black, 1, ButtonBorderStyle.Solid);// bottom
+            invoicePanel.BackColor = Color.White;
         }
+
+
+       
 
 
     }

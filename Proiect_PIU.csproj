@@ -48,6 +48,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="itextsharp">
+      <HintPath>C:\Users\Andrei Gurzun\Desktop\itext\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -135,10 +138,12 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\butonBackground.jfif" />
     <Content Include="Resources\customer.png" />
     <Content Include="Resources\delete.png" />
     <Content Include="Resources\find.png" />
     <Content Include="Resources\login.png" />
+    <Content Include="Resources\login2.png" />
     <Content Include="Resources\stock.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -31,7 +31,8 @@ namespace Proiect_PIU
             
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.BackColor = Color.NavajoWhite;
+            //this.BackColor = Color.NavajoWhite;
+            this.BackColor = Color.Lavender;
             this.Size = new Size(500, 350);
             this.Text = "Login";
             this.CenterToScreen();
@@ -60,6 +61,8 @@ namespace Proiect_PIU
             this.btnLogin.Cursor = Cursors.Hand;
             this.btnLogin.Text = "Login";
             this.btnLogin.Font = font2;
+            Image buttonBackground = Image.FromFile(@"..\..\Resources\butonBackground.jfif");
+            this.btnLogin.BackgroundImage = buttonBackground;
 
             this.welcomeLabel.Text = "Welcome";
             this.welcomeLabel.Font = welcomeFont;
@@ -76,7 +79,7 @@ namespace Proiect_PIU
             this.passwordLabel.Location = new Point(150, 155);
 
 
-            loginPicture.Image = Image.FromFile(@"..\..\Resources\login.png");
+            loginPicture.Image = Image.FromFile(@"..\..\Resources\login2.png");
             loginPicture.SizeMode = PictureBoxSizeMode.AutoSize;
             loginPicture.Location = new Point(20, 90);
 
