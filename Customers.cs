@@ -170,6 +170,19 @@ namespace Proiect_PIU
 
         private void BtnAddInvoice_Click(object sender, EventArgs e)
         {
+            // Din Tutorial
+
+            //TXTextControl.LoadSettings ls = new TXTextControl.LoadSettings();
+            //ls.ApplicationFieldFormat = TXTextControl.ApplicationFieldFormat.MSWord;
+
+            //mailMerge1.TextComponent = textControl1;
+            //textControl1.Load("invoice.docx", TXTextControl.StreamType.WordprocessingML, ls);
+            //DataSet ds = new DataSet();
+            //ds.ReadXml("invoice.xml");
+
+            //mailMerge1.MergeBlocks(ds);
+            //mailMerge1.Merge(ds.Tables["invoice"], false);
+
             MessageBox.Show("The invoice has been generated");
         }
 
@@ -177,6 +190,11 @@ namespace Proiect_PIU
         {
             //generare un document PDF in folderul InvoicePDF cu factura salvata
             Document document = new Document();
+            //creaza folder
+            if (!Directory.Exists(@"..\..\InvoicePDF"))
+            {
+                Directory.CreateDirectory(@"..\..\InvoicePDF");
+            }
             PdfWriter.GetInstance(document, new FileStream(@"..\..\InvoicePDF\invoice.pdf", FileMode.Create));
             document.Open();
             Paragraph p = new Paragraph(this.testLabel.Text);

@@ -100,6 +100,8 @@ namespace Proiect_PIU
             //Form2 f2 = new Form2();
             //f2.Show();
             Customers c = new Customers();
+            Database.Connection();
+            Database.Interogare("name", "password");
             c.Show();
         }
 
