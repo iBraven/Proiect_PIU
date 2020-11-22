@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,6 +32,7 @@ namespace Proiect_PIU
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.BackColor = Color.NavajoWhite;
@@ -77,8 +79,8 @@ namespace Proiect_PIU
             this.passwordLabel.Font = font2;
             this.passwordLabel.Location = new Point(150, 155);
 
-
-            //loginPicture.Image = Image.FromFile(@"D:\Facultate\Facultate\An4\SEM1\PIU\Proiect_PIU\Properties\login.jpg");
+            string path = Path.Combine(Environment.CurrentDirectory, @"..\..\Resources\", "login.png");
+            loginPicture.Image = Image.FromFile(path);
             loginPicture.SizeMode = PictureBoxSizeMode.AutoSize;
             loginPicture.Location = new Point(20, 90);
 
@@ -89,7 +91,7 @@ namespace Proiect_PIU
             this.Controls.Add(welcomeLabel);
             this.Controls.Add(usernameLabel);
             this.Controls.Add(passwordLabel);
-            //this.Controls.Add(loginPicture);
+            this.Controls.Add(loginPicture);
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
