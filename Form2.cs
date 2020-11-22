@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Proiect_PIU
@@ -302,7 +296,7 @@ namespace Proiect_PIU
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("saved product");
+            MessageBox.Show("Saved product");
         }
 
         private void HideCbx()

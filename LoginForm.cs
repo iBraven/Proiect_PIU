@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,7 +22,7 @@ namespace Proiect_PIU
         public LoginForm()
         {
             InitializeComponent();
-            this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
+            this.btnLogin.Click += new EventHandler(this.btnLogin_Click);
 
         }
 
@@ -36,7 +32,7 @@ namespace Proiect_PIU
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.BackColor = Color.NavajoWhite;
-            this.Size = new System.Drawing.Size(500, 350);
+            this.Size = new Size(500, 350);
             this.Text = "Login";
             this.CenterToScreen();
             this.FormBorderStyle = FormBorderStyle.FixedDialog;
@@ -79,8 +75,8 @@ namespace Proiect_PIU
             this.passwordLabel.Font = font2;
             this.passwordLabel.Location = new Point(150, 155);
 
-            string path = Path.Combine(Environment.CurrentDirectory, @"..\..\Resources\", "login.png");
-            loginPicture.Image = Image.FromFile(path);
+
+            //loginPicture.Image = Image.FromFile(@"D:\Facultate\Facultate\An4\SEM1\PIU\Proiect_PIU\Properties\login.jpg");
             loginPicture.SizeMode = PictureBoxSizeMode.AutoSize;
             loginPicture.Location = new Point(20, 90);
 
@@ -91,7 +87,7 @@ namespace Proiect_PIU
             this.Controls.Add(welcomeLabel);
             this.Controls.Add(usernameLabel);
             this.Controls.Add(passwordLabel);
-            this.Controls.Add(loginPicture);
+            //this.Controls.Add(loginPicture);
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -100,6 +96,8 @@ namespace Proiect_PIU
 
             Form2 f2 = new Form2();
             f2.Show();
+            //Customers c = new Customers();
+            //c.Show();
         }
 
     }
