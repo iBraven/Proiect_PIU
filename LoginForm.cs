@@ -94,11 +94,11 @@ namespace Proiect_PIU
         {
             this.Hide();
 
-            //Form2 f2 = new Form2();
+            //ProductType f2 = new ProductType();
             //f2.Show();
             Customers c = new Customers();
-            Database.Connection();
-            Database.Interogare("name", "password");
+            //Database.Connection();
+            //Database.Interogare("name", "password");
             c.Show();
         }
 

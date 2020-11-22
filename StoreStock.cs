@@ -28,7 +28,6 @@ namespace Proiect_PIU
             this.StartPosition = FormStartPosition.CenterScreen;
             this.Size = new Size(1350, 750);
             this.CenterToParent();
-            //this.BackColor = Color.NavajoWhite;
             this.BackColor = Color.MediumAquamarine;
 
             Font customerLabelFont = new Font("Times New Roman", 25);

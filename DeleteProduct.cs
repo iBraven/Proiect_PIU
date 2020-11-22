@@ -26,10 +26,9 @@ namespace Proiect_PIU
             this.StartPosition = FormStartPosition.CenterScreen;
             this.Size = new Size(1350, 750);
             this.CenterToParent();
-            //this.BackColor = Color.NavajoWhite;
             this.BackColor = Color.MediumAquamarine;
 
-            Font customerLabelFont = new Font("Times New Roman", 25);
+            Font deleteLabelFont = new Font("Times New Roman", 25);
             Font labelFont = new Font("Times New Roman", 15.0f);
             Font textboxFont = new Font("Georgia", 15.0f);
 
@@ -40,7 +39,7 @@ namespace Proiect_PIU
             deleteProductPicture.Location = new Point(20, 90);
 
             this.title.Text = "Delete Product";
-            this.title.Font = customerLabelFont;
+            this.title.Font = deleteLabelFont;
             this.title.Size = new Size(105, 0);
             this.title.AutoSize = true;
             this.title.Location = new Point((this.Width - this.title.Width) / 2, 50);

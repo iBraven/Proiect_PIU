@@ -70,6 +70,7 @@
     <Compile Include="Customers.Designer.cs">
       <DependentUpon>Customers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Database.cs" />
     <Compile Include="DeleteProduct.cs">
       <SubType>Form</SubType>
     </Compile>

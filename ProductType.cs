@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Proiect_PIU
@@ -29,6 +30,9 @@ namespace Proiect_PIU
         private Button btnSave = new Button();
         private Button btnSpecs = new Button();
 
+        private Label title = new Label();
+        private PictureBox productTypePicture = new PictureBox();
+
         public ProductType()
         {
             InitializeComponent();
@@ -41,26 +45,41 @@ namespace Proiect_PIU
         {
             this.MaximizeBox = false;
             this.StartPosition = FormStartPosition.CenterScreen;
-            this.Size = new Size(1300, 750);
+            this.Size = new Size(1350, 750);
             this.CenterToParent();
-            //this.BackColor = Color.NavajoWhite;
             this.BackColor = Color.MediumAquamarine;
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
 
-            //titlu la form AddItem
-            //de pus titlu si imagine la pagina/
-            //resize la tot 
 
             Font cbxFont = new Font("Georgia", 12);
             Font labelFont = new Font("Times New Roman", 14.0f);
+            Font productTypeLabelFont = new Font("Times New Roman", 25);
+
+
+            //title
+            string path = Path.Combine(Environment.CurrentDirectory, @"..\..\Resources\", "productType.png");
+            productTypePicture.Image = Image.FromFile(path);
+            productTypePicture.SizeMode = PictureBoxSizeMode.AutoSize;
+            productTypePicture.Location = new Point(20, 90);
+
+            //image
+            this.productTypePicture.Location = new Point(475, 20);
+
+            this.title.Text = "Product Type";
+            this.title.Font = productTypeLabelFont;
+            this.title.Size = new Size(105, 0);
+            this.title.AutoSize = true;
+            this.title.Location = new Point((this.Width - this.title.Width) / 2, 50);
+
+
 
             //product type
-            this.productTypeLabel.Location = new Point((this.Width-productTypeLabel.Width*2)/2, 40);
+            this.productTypeLabel.Location = new Point(150, 100);
             this.productTypeLabel.Text = "Product type: ";
             this.productTypeLabel.Size = new Size(200, 20);
             this.productTypeLabel.Font = labelFont;
 
-            this.productTypeCbx.Location = new Point((this.Width - productTypeLabel.Width) / 2, 70);
+            this.productTypeCbx.Location = new Point(150, 130);
             this.productTypeCbx.Name = "Product type";
             this.productTypeCbx.Size = new Size(200, 50);
             this.productTypeCbx.Font = cbxFont;
@@ -70,12 +89,12 @@ namespace Proiect_PIU
 
 
             //company
-            this.companyLabel.Location = new Point(100, 140);
+            this.companyLabel.Location = new Point(150, 250);
             this.companyLabel.Size = new Size(200, 20);
             this.companyLabel.Text = "Company: ";
             this.companyLabel.Font = labelFont;
 
-            this.companyCbx.Location = new Point(100, 170);
+            this.companyCbx.Location = new Point(150, 280);
             this.companyCbx.Name = "Company";
             this.companyCbx.Size = new Size(200, 50);
             this.companyCbx.Font = cbxFont;
@@ -86,12 +105,12 @@ namespace Proiect_PIU
             this.companyCbx.AutoCompleteSource = AutoCompleteSource.ListItems;
 
             //model name
-            this.modelNameLabel.Location = new Point(100, 250);
+            this.modelNameLabel.Location = new Point(150, 350);
             this.modelNameLabel.Size = new Size(200, 20);
             this.modelNameLabel.Text = "Model name: ";
             this.modelNameLabel.Font = labelFont;
 
-            this.modelNameCbx.Location = new Point(100, 280);
+            this.modelNameCbx.Location = new Point(150, 380);
             this.modelNameCbx.Name = "Model name";
             this.modelNameCbx.Size = new Size(200, 50);
             this.modelNameCbx.Font = cbxFont;
@@ -99,12 +118,12 @@ namespace Proiect_PIU
             this.modelNameCbx.AutoCompleteSource = AutoCompleteSource.ListItems;
 
             //Internal storage
-            this.internalStorageLabel.Location = new Point(100, 360);
+            this.internalStorageLabel.Location = new Point(150, 450);
             this.internalStorageLabel.Size = new Size(200, 20);
             this.internalStorageLabel.Text = "Internal Storage: ";
             this.internalStorageLabel.Font = labelFont;
 
-            this.internalStorageCbx.Location = new Point(100, 390);
+            this.internalStorageCbx.Location = new Point(150, 480);
             this.internalStorageCbx.Name = "Internal Storage ";
             this.internalStorageCbx.Size = new Size(200, 50);
             this.internalStorageCbx.Font = cbxFont;
@@ -112,12 +131,12 @@ namespace Proiect_PIU
             this.internalStorageCbx.AutoCompleteSource = AutoCompleteSource.ListItems;
 
             //RAM
-            this.ramLabel.Location = new Point(400, 140);
+            this.ramLabel.Location = new Point(550, 250);
             this.ramLabel.Size = new Size(200, 20);
             this.ramLabel.Text = "RAM: ";
             this.ramLabel.Font = labelFont;
 
-            this.ramCbx.Location = new Point(400, 170);
+            this.ramCbx.Location = new Point(550, 280);
             this.ramCbx.Name = "RAM";
             this.ramCbx.Size = new Size(200, 50);
             this.ramCbx.Font = cbxFont;
@@ -125,12 +144,12 @@ namespace Proiect_PIU
             this.ramCbx.AutoCompleteSource = AutoCompleteSource.ListItems;
 
             //display
-            this.displayLabel.Location = new Point(400, 250);
+            this.displayLabel.Location = new Point(550, 350);
             this.displayLabel.Size = new Size(200, 20);
             this.displayLabel.Text = "Display: ";
             this.displayLabel.Font = labelFont;
 
-            this.displayCbx.Location = new Point(400, 280);
+            this.displayCbx.Location = new Point(550, 380);
             this.displayCbx.Name = "Display";
             this.displayCbx.Size = new Size(200, 50);
             this.displayCbx.Font = cbxFont;
@@ -138,12 +157,12 @@ namespace Proiect_PIU
             this.displayCbx.AutoCompleteSource = AutoCompleteSource.ListItems;
 
             //fingerprint sensor
-            this.fingerprintLabel.Location = new Point(400, 360);
+            this.fingerprintLabel.Location = new Point(550, 450);
             this.fingerprintLabel.Size = new Size(200, 20);
             this.fingerprintLabel.Text = "Fingerprint sensor: ";
             this.fingerprintLabel.Font = labelFont;
 
-            this.fingerprintCbx.Location = new Point(400, 390);
+            this.fingerprintCbx.Location = new Point(550, 480);
             this.fingerprintCbx.Name = "Fingerprint sensor";
             this.fingerprintCbx.Size = new Size(200, 50);
             this.fingerprintCbx.Font = cbxFont;
@@ -151,12 +170,12 @@ namespace Proiect_PIU
             this.fingerprintCbx.AutoCompleteSource = AutoCompleteSource.ListItems;
 
             //rear camera
-            this.rearCameraLabel.Location = new Point(700, 140);
+            this.rearCameraLabel.Location = new Point(950, 250);
             this.rearCameraLabel.Size = new Size(200, 20);
             this.rearCameraLabel.Text = "Rear camera: ";
             this.rearCameraLabel.Font = labelFont;
 
-            this.rearCameraCbx.Location = new Point(700, 170);
+            this.rearCameraCbx.Location = new Point(950, 280);
             this.rearCameraCbx.Name = "Rear camera";
             this.rearCameraCbx.Size = new Size(200, 50);
             this.rearCameraCbx.Font = cbxFont;
@@ -164,12 +183,12 @@ namespace Proiect_PIU
             this.rearCameraCbx.AutoCompleteSource = AutoCompleteSource.ListItems;
 
             //front camera
-            this.frontCameraLabel.Location = new Point(700, 250);
+            this.frontCameraLabel.Location = new Point(950, 350);
             this.frontCameraLabel.Size = new Size(200, 20);
             this.frontCameraLabel.Text = "Front camera: ";
             this.frontCameraLabel.Font = labelFont;
 
-            this.frontCameraCbx.Location = new Point(700, 280);
+            this.frontCameraCbx.Location = new Point(950, 380);
             this.frontCameraCbx.Name = "Front camera";
             this.frontCameraCbx.Size = new Size(200, 50);
             this.frontCameraCbx.Font = cbxFont;
@@ -177,34 +196,43 @@ namespace Proiect_PIU
             this.frontCameraCbx.AutoCompleteSource = AutoCompleteSource.ListItems;
 
             //price
-            this.priceLabel.Location = new Point(700, 360);
+            this.priceLabel.Location = new Point(950, 450);
             this.priceLabel.Size = new Size(200, 20);
             this.priceLabel.Text = "Price: ";
             this.priceLabel.Font = labelFont;
 
-            this.priceCbx.Location = new Point(700, 390);
+            this.priceCbx.Location = new Point(950, 480);
             this.priceCbx.Name = "Price";
             this.priceCbx.Size = new Size(200, 50);
             this.priceCbx.Font = cbxFont;
             this.priceCbx.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             this.priceCbx.AutoCompleteSource = AutoCompleteSource.ListItems;
 
-            this.btnSpecs.Location = new Point((this.Width - btnSpecs.Width) / 2, 100);
+            //Select Specs btn
+            //this.btnSpecs.Location = new Point((this.Width - btnSpecs.Width) / 2, 200);
+            this.btnSpecs.Location = new Point(200, 600);
             this.btnSpecs.Text = "Select specs";
             this.btnSpecs.Size = new Size(80, 25);
             this.btnSave.FlatStyle = FlatStyle.Flat;
             this.btnSave.FlatAppearance.BorderColor = Color.Black;
             this.btnSave.FlatAppearance.BorderSize = 1;
+            Image buttonBackground = Image.FromFile(@"..\..\Resources\butonBackground.jfif");
+            this.btnSpecs.BackgroundImage = buttonBackground;
 
-            this.btnSave.Location = new Point(800, 500);
+            //SAVE btn
+            this.btnSave.Location = new Point(1000, 600);
             this.btnSave.Size = new Size(125, 40);
             this.btnSave.Text = "Save";
             this.btnSave.FlatStyle = FlatStyle.Flat;
             this.btnSave.FlatAppearance.BorderColor = Color.Black;
             this.btnSave.FlatAppearance.BorderSize = 1;
-            Image buttonBackground = Image.FromFile(@"..\..\Resources\butonBackground.jfif");
+            buttonBackground = Image.FromFile(@"..\..\Resources\butonBackground.jfif");
             this.btnSave.BackgroundImage = buttonBackground;
 
+
+            //CONTROLS
+            this.Controls.Add(title);
+            this.Controls.Add(productTypePicture);
             this.Controls.Add(productTypeLabel);
             this.Controls.Add(productTypeCbx);
             this.Controls.Add(companyLabel);
