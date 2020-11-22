@@ -39,10 +39,16 @@ namespace Proiect_PIU
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            this.MaximizeBox = false;
             this.StartPosition = FormStartPosition.CenterScreen;
-            this.Size = new Size(1000, 600);
+            this.Size = new Size(1300, 750);
             this.CenterToParent();
             this.BackColor = Color.NavajoWhite;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+
+            //titlu la form AddItem
+            //de pus titlu si imagine la pagina/
+            //resize la tot 
 
             Font cbxFont = new Font("Georgia", 12);
             Font labelFont = new Font("Times New Roman", 14.0f);

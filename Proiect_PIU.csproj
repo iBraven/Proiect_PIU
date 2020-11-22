@@ -87,6 +87,9 @@
     <Compile Include="StoreStock.Designer.cs">
       <DependentUpon>StoreStock.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Customers.resx">
+      <DependentUpon>Customers.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
@@ -103,6 +106,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="StoreStock.resx">
+      <DependentUpon>StoreStock.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -22,7 +22,7 @@ namespace Proiect_PIU
         public LoginForm()
         {
             InitializeComponent();
-            this.btnLogin.Click += new EventHandler(this.btnLogin_Click);
+            this.btnLogin.Click += new EventHandler(this.BtnLogin_Click);
 
         }
 
@@ -76,7 +76,7 @@ namespace Proiect_PIU
             this.passwordLabel.Location = new Point(150, 155);
 
 
-            //loginPicture.Image = Image.FromFile(@"D:\Facultate\Facultate\An4\SEM1\PIU\Proiect_PIU\Properties\login.jpg");
+            loginPicture.Image = Image.FromFile(@"..\..\Resources\login.png");
             loginPicture.SizeMode = PictureBoxSizeMode.AutoSize;
             loginPicture.Location = new Point(20, 90);
 
@@ -87,17 +87,17 @@ namespace Proiect_PIU
             this.Controls.Add(welcomeLabel);
             this.Controls.Add(usernameLabel);
             this.Controls.Add(passwordLabel);
-            //this.Controls.Add(loginPicture);
+            this.Controls.Add(loginPicture);
         }
 
-        private void btnLogin_Click(object sender, EventArgs e)
+        private void BtnLogin_Click(object sender, EventArgs e)
         {
             this.Hide();
 
-            Form2 f2 = new Form2();
-            f2.Show();
-            //Customers c = new Customers();
-            //c.Show();
+            //Form2 f2 = new Form2();
+            //f2.Show();
+            Customers c = new Customers();
+            c.Show();
         }
 
     }
