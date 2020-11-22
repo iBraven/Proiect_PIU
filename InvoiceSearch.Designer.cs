@@ -1,6 +1,6 @@
 ﻿namespace Proiect_PIU
 {
-    partial class Form2
+    partial class InvoiceSearch
     {
         /// <summary>
         /// Required designer variable.
@@ -28,18 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
-            // 
-            // Form2
-            // 
+            //this.components = new System.ComponentModel.Container();
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "Form2";
-            this.Text = "Form2";
-            this.Load += new System.EventHandler(this.Form2_Load);
+            this.Name = "InvoiceSearch";
+            this.Text = "InvoiceSearch";
+            this.Load += new System.EventHandler(this.InvoiceSearch_Load);
             this.ResumeLayout(false);
-
         }
 
         #endregion

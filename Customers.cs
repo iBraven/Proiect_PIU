@@ -42,6 +42,7 @@ namespace Proiect_PIU
 
         private void Customers_Load(object sender, EventArgs e)
         {
+            this.MaximizeBox = false;
             this.StartPosition = FormStartPosition.CenterScreen;
             this.Size = new Size(1350, 750);
             this.CenterToParent();
