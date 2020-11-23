@@ -27,6 +27,7 @@ namespace Proiect_PIU
             this.Size = new Size(1350, 750);
             this.CenterToParent();
             this.BackColor = Color.MediumAquamarine;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
 
             Font deleteLabelFont = new Font("Times New Roman", 25);
             Font labelFont = new Font("Times New Roman", 15.0f);

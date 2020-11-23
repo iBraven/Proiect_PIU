@@ -28,7 +28,6 @@ namespace Proiect_PIU
         private Label priceLabel = new Label();
         private ComboBox priceCbx = new ComboBox();
         private Button btnSave = new Button();
-        private Button btnSpecs = new Button();
 
         private Label title = new Label();
         private PictureBox productTypePicture = new PictureBox();
@@ -38,7 +37,7 @@ namespace Proiect_PIU
             InitializeComponent();
 
             this.btnSave.Click += new EventHandler(this.BtnSave_Click);
-            this.btnSpecs.Click += new EventHandler(this.BtnSpecs_Click);
+            this.productTypeCbx.SelectedIndexChanged += new EventHandler(this.ProductTypeCbx_SelectedIndexChanged);
         }
 
         private void Form2_Load(object sender, EventArgs e)
@@ -208,16 +207,7 @@ namespace Proiect_PIU
             this.priceCbx.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             this.priceCbx.AutoCompleteSource = AutoCompleteSource.ListItems;
 
-            //Select Specs btn
-            //this.btnSpecs.Location = new Point((this.Width - btnSpecs.Width) / 2, 200);
-            this.btnSpecs.Location = new Point(200, 600);
-            this.btnSpecs.Text = "Select specs";
-            this.btnSpecs.Size = new Size(80, 25);
-            this.btnSave.FlatStyle = FlatStyle.Flat;
-            this.btnSave.FlatAppearance.BorderColor = Color.Black;
-            this.btnSave.FlatAppearance.BorderSize = 1;
             Image buttonBackground = Image.FromFile(@"..\..\Resources\butonBackground.jfif");
-            this.btnSpecs.BackgroundImage = buttonBackground;
 
             //SAVE btn
             this.btnSave.Location = new Point(1000, 600);
@@ -254,14 +244,16 @@ namespace Proiect_PIU
             this.Controls.Add(priceLabel);
             this.Controls.Add(priceCbx);
             this.Controls.Add(btnSave);
-            this.Controls.Add(btnSpecs);
         }
 
         private void BtnSpecs_Click(object sender, EventArgs e)
         {
+            //
+        }
+        private void ProductTypeCbx_SelectedIndexChanged(Object sender, EventArgs e)
+        {
             ClearCbx();
-            
-            if (this.productTypeCbx.Text == "Smartphone")
+            if (this.productTypeCbx.GetItemText(this.productTypeCbx.SelectedItem)=="Smartphone")
             {
                 ShowCbx();
                 this.modelNameCbx.Items.Add("Samsung Galaxy S8");
@@ -297,8 +289,9 @@ namespace Proiect_PIU
                 this.priceCbx.Items.Add("4000");
                 this.priceCbx.Items.Add("2000");
                 this.priceCbx.Items.Add("2500");
+
             }
-            else if (this.productTypeCbx.Text == "Laptop")
+            else if (this.productTypeCbx.GetItemText(this.productTypeCbx.SelectedItem) == "Laptop")
             {
                 ShowCbx();
                 this.modelNameCbx.Items.Add("Asus VivoBook");
@@ -323,14 +316,20 @@ namespace Proiect_PIU
                 this.priceCbx.Items.Add("3250");
                 this.priceCbx.Items.Add("2800");
                 this.priceCbx.Items.Add("7499");
+
+                this.rearCameraCbx.Hide();
+                this.rearCameraLabel.Hide();
+                this.frontCameraCbx.Hide();
+                this.frontCameraLabel.Hide();
+                this.priceLabel.Location = new Point(950, 350);
+                this.priceCbx.Location = new Point(950, 380);
+
             }
             else
             {
                 HideCbx();
-                MessageBox.Show("You forgot to select a product type.");
             }
         }
-
         private void BtnSave_Click(object sender, EventArgs e)
         {
             MessageBox.Show("Saved product");
