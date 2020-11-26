@@ -64,7 +64,7 @@ namespace Proiect_PIU
             //image
             this.productTypePicture.Location = new Point(475, 20);
 
-            this.title.Text = "Product Type";
+            this.title.Text = "Add to store";
             this.title.Font = productTypeLabelFont;
             this.title.Size = new Size(105, 0);
             this.title.AutoSize = true;
