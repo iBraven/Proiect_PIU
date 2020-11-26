@@ -46,8 +46,8 @@ namespace Proiect_PIU
             this.StartPosition = FormStartPosition.CenterScreen;
             this.Size = new Size(1350, 750);
             this.CenterToParent();
-            //this.BackColor = Color.NavajoWhite;
             this.BackColor = Color.MediumAquamarine;
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
 
             System.Drawing.Font textboxFont = new System.Drawing.Font("Times New Roman", 14.0f);
             System.Drawing.Font labelFont = new System.Drawing.Font("Times New Roman", 16.0f);

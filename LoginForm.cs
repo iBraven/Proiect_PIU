@@ -94,8 +94,8 @@ namespace Proiect_PIU
         {
             this.Hide();
 
-            ProductType f2 = new ProductType();
-            f2.Show();
+            //ProductType f2 = new ProductType();
+            //f2.Show();
             Customers c = new Customers();
             //Database.Connection();
             //Database.Interogare("name", "password");

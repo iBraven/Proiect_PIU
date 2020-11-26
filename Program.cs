@@ -14,11 +14,12 @@ namespace Proiect_PIU
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new LoginForm());
-            Application.Run(new ProductType());
+            //Application.Run(new ProductType());
             //Application.Run(new Customers());
             //Application.Run(new StoreStock());
             //Application.Run(new InvoiceSearch());
             //Application.Run(new DeleteProduct());
+            Application.Run(new MainForm());
         }
     }
 }
