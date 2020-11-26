@@ -60,7 +60,7 @@ namespace Proiect_PIU
             this.productTypeBtn.FlatAppearance.BorderColor = Color.Black;
             this.productTypeBtn.FlatAppearance.BorderSize = 1;
             this.productTypeBtn.Font = titlesFont;
-            this.productTypeBtn.BackColor = Color.Olive;
+            this.productTypeBtn.BackColor = Color.Tan;
 
             this.customersBtn.Location = new Point(0,140);
             this.customersBtn.Size = new Size(150, 140);
@@ -69,7 +69,7 @@ namespace Proiect_PIU
             this.customersBtn.FlatAppearance.BorderColor = Color.Black;
             this.customersBtn.FlatAppearance.BorderSize = 1;
             this.customersBtn.Font = titlesFont;
-            this.customersBtn.BackColor = Color.Olive;
+            this.customersBtn.BackColor = Color.Tan;
 
             this.invoiceSearchBtn.Location = new Point(0,280);
             this.invoiceSearchBtn.Size = new Size(150, 140);
@@ -78,7 +78,7 @@ namespace Proiect_PIU
             this.invoiceSearchBtn.FlatAppearance.BorderColor = Color.Black;
             this.invoiceSearchBtn.FlatAppearance.BorderSize = 1;
             this.invoiceSearchBtn.Font = titlesFont;
-            this.invoiceSearchBtn.BackColor = Color.Olive;
+            this.invoiceSearchBtn.BackColor = Color.Tan;
 
             this.storeStockBtn.Location = new Point(0,420);
             this.storeStockBtn.Size = new Size(150, 140);
@@ -87,7 +87,7 @@ namespace Proiect_PIU
             this.storeStockBtn.FlatAppearance.BorderColor = Color.Black;
             this.storeStockBtn.FlatAppearance.BorderSize = 1;
             this.storeStockBtn.Font = titlesFont;
-            this.storeStockBtn.BackColor = Color.Olive;
+            this.storeStockBtn.BackColor = Color.Tan;
 
             this.deleteProductBtn.Location = new Point(0,560);
             this.deleteProductBtn.Size = new Size(150, 150);
@@ -96,7 +96,7 @@ namespace Proiect_PIU
             this.deleteProductBtn.FlatAppearance.BorderColor = Color.Black;
             this.deleteProductBtn.FlatAppearance.BorderSize = 1;
             this.deleteProductBtn.Font = titlesFont;
-            this.deleteProductBtn.BackColor = Color.Olive;
+            this.deleteProductBtn.BackColor = Color.Tan;
 
 
             this.Controls.Add(menuPanel);
