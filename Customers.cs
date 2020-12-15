@@ -21,13 +21,19 @@ namespace Proiect_PIU
         private Label addressLabel = new Label();
         private Label productLabel = new Label();
 
+        private Label nameLabelInvoice = new Label();
+        private Label phoneLabelInvoice = new Label();
+        private Label emailLabelInvoice = new Label();
+        private Label addressLabelInvoice = new Label();
+        private Label productLabelInvoice = new Label();
+
         private Panel invoicePanel = new Panel();
 
-        private Label testLabel = new Label();
+        private Label titleLabelInvoice = new Label();
 
         private Button btnAddInvoice = new Button();
         private Button btnSaveInvoice = new Button();
-        private Label title = new Label();
+        private Label titleLabel = new Label();
         private PictureBox customersPicture = new PictureBox();
 
 
@@ -51,8 +57,9 @@ namespace Proiect_PIU
 
             System.Drawing.Font textboxFont = new System.Drawing.Font("Times New Roman", 14.0f);
             System.Drawing.Font labelFont = new System.Drawing.Font("Times New Roman", 16.0f);
-            System.Drawing.Font customerLabelFont = new System.Drawing.Font("Times New Roman", 25);
+            System.Drawing.Font titleFont = new System.Drawing.Font("Times New Roman", 25);
             System.Drawing.Font btnFont = new System.Drawing.Font("Times New Roman", 15.0f);
+            System.Drawing.Font invoiceLabelFont = new System.Drawing.Font("Times New Roman", 15.0f);
 
             //title
             string path = Path.Combine(Environment.CurrentDirectory, @"..\..\Resources\", "customer.png");
@@ -60,11 +67,11 @@ namespace Proiect_PIU
             customersPicture.SizeMode = PictureBoxSizeMode.AutoSize;
             customersPicture.Location = new Point(20, 90);
 
-            this.title.Text = "Customer Purchase";
-            this.title.Font = customerLabelFont;
-            this.title.Size = new Size(150, 0);
-            this.title.AutoSize = true;
-            this.title.Location = new Point((this.Width - this.title.Width) / 2, 50);
+            this.titleLabel.Text = "Customer Purchase";
+            this.titleLabel.Font = titleFont;
+            this.titleLabel.Size = new Size(150, 0);
+            this.titleLabel.AutoSize = true;
+            this.titleLabel.Location = new Point((this.Width - this.titleLabel.Width) / 2, 50);
 
 
 
@@ -72,7 +79,6 @@ namespace Proiect_PIU
             this.nameLabel.Location = new Point(60, 150);
             this.nameLabel.Text = "Name: ";
             this.nameLabel.Font = labelFont;
-
 
             this.name.Location = new Point(150, 150);
             this.name.Size = new Size(250, 20);
@@ -136,9 +142,11 @@ namespace Proiect_PIU
 
             //antetLabel for Invoice
             this.invoicePanel.Visible = true;
-            this.testLabel.Text = "INVOICE";
-            this.testLabel.Location = new Point(300, 70);
-            this.invoicePanel.Controls.Add(testLabel);
+            this.titleLabelInvoice.Text = "INVOICE";
+            this.titleLabelInvoice.Location = new Point(300, 70);
+            this.titleLabelInvoice.Font = new System.Drawing.Font(invoiceLabelFont, FontStyle.Bold);
+            this.invoicePanel.Controls.Add(titleLabelInvoice);
+
 
 
             //btnSaveInvoice
@@ -151,6 +159,23 @@ namespace Proiect_PIU
             this.btnSaveInvoice.Font = btnFont;
             this.btnSaveInvoice.BackgroundImage = buttonBackground;
 
+            this.nameLabelInvoice.Location = new Point(30, 120);
+            this.nameLabelInvoice.Size = new Size(250, 20);
+            this.phoneLabelInvoice.Location = new Point(30, 160);
+            this.phoneLabelInvoice.Size = new Size(250, 20);
+            this.emailLabelInvoice.Location = new Point(30, 200);
+            this.emailLabelInvoice.Size = new Size(250, 20);
+            this.addressLabelInvoice.Location = new Point(30, 240);
+            this.addressLabelInvoice.Size = new Size(400, 20);
+            this.productLabelInvoice.Location = new Point(30, 280);
+            this.productLabelInvoice.Size = new Size(250, 20);
+
+            this.invoicePanel.Controls.Add(nameLabelInvoice);
+            this.invoicePanel.Controls.Add(emailLabelInvoice);
+            this.invoicePanel.Controls.Add(phoneLabelInvoice);
+            this.invoicePanel.Controls.Add(addressLabelInvoice);
+            this.invoicePanel.Controls.Add(productLabelInvoice);
+
 
             this.Controls.Add(name);
             this.Controls.Add(phoneNumber);
@@ -162,7 +187,7 @@ namespace Proiect_PIU
             this.Controls.Add(phoneLabel);
             this.Controls.Add(addressLabel);
             this.Controls.Add(productLabel);
-            this.Controls.Add(title);
+            this.Controls.Add(titleLabel);
             this.Controls.Add(customersPicture);
             this.Controls.Add(btnAddInvoice);
             this.Controls.Add(invoicePanel);
@@ -171,6 +196,11 @@ namespace Proiect_PIU
 
         private void BtnAddInvoice_Click(object sender, EventArgs e)
         {
+            this.nameLabelInvoice.Text = "";
+            this.emailLabelInvoice.Text = "";
+            this.phoneLabelInvoice.Text = "";
+            this.addressLabelInvoice.Text = "";
+            this.productLabelInvoice.Text = "";
             // Din Tutorial
 
             //TXTextControl.LoadSettings ls = new TXTextControl.LoadSettings();
@@ -184,24 +214,55 @@ namespace Proiect_PIU
             //mailMerge1.MergeBlocks(ds);
             //mailMerge1.Merge(ds.Tables["invoice"], false);
 
-            MessageBox.Show("The invoice has been generated");
+            if(name.Text != "" && email.Text != "" && phoneNumber.Text != "" && address.Text != "" && product.Text != "")
+            {
+                this.nameLabelInvoice.Text += "NAME:   " + name.Text;
+                this.emailLabelInvoice.Text += "EMAIL:   " + email.Text;
+                this.phoneLabelInvoice.Text += "PHONE NUMBER:   " + phoneNumber.Text;
+                this.addressLabelInvoice.Text += "ADDRESS:   " + address.Text;
+                this.productLabelInvoice.Text += "PRODUCT:   " + product.Text;
+            }
+            else
+            {
+                MessageBox.Show("Incomplete informations!");
+            }
+
         }
 
+        int i = 1;
         private void BtnSaveInvoice_Click(object sender, EventArgs e)
         {
-            //generare un document PDF in folderul InvoicePDF cu factura salvata
-            Document document = new Document();
-            //creaza folder
-            if (!Directory.Exists(@"..\..\InvoicePDF"))
+            if (name.Text != "" && email.Text != "" && phoneNumber.Text != "" && address.Text != "" && product.Text != "")
             {
-                Directory.CreateDirectory(@"..\..\InvoicePDF");
+                //generare un document PDF in folderul InvoicePDF cu factura salvata
+                Document document = new Document();
+                //creaza folder
+                if (!Directory.Exists(@"..\..\InvoicePDF"))
+                {
+                    Directory.CreateDirectory(@"..\..\InvoicePDF");
+                }
+                PdfWriter.GetInstance(document, new FileStream(@"..\..\InvoicePDF\invoice" + i + ".pdf", FileMode.Create));
+                document.Open();
+                Paragraph title = new Paragraph("---------------------------------------------------INVOICE NUMBER " + i + "---------------------------------------------------"
+                    + Environment.NewLine + Environment.NewLine + Environment.NewLine);
+                document.Add(title);
+                foreach (Control control in invoicePanel.Controls)
+                {
+                    if (control != titleLabelInvoice)
+                    {
+                        Paragraph p = new Paragraph(Environment.NewLine + control.Text);
+                        document.Add(p);
+                    }
+
+                }
+                document.Close();
+                ++i;
+                MessageBox.Show("Invoice saved successfully");
             }
-            PdfWriter.GetInstance(document, new FileStream(@"..\..\InvoicePDF\invoice.pdf", FileMode.Create));
-            document.Open();
-            Paragraph p = new Paragraph(this.testLabel.Text);
-            document.Add(p);
-            document.Close();
-            MessageBox.Show("Invoice saved successfully");
+            else
+            {
+                MessageBox.Show("Incomplete informations!");
+            }
         }
 
         private void InvoicePanel_Paint(object sender, PaintEventArgs e)

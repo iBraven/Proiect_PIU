@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using MongoDB.Driver;
+using MongoDB.Bson;
+
 
 namespace Proiect_PIU
 {
@@ -38,5 +41,6 @@ namespace Proiect_PIU
             connection.Close();
             MessageBox.Show(Output);
         }
+        
     }
 }

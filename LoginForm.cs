@@ -1,6 +1,11 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using MongoDB.Bson;
+using MongoDB.Driver;
+using MongoDB.Driver.Builders;
+using MongoDB.Driver.GridFS;
+using MongoDB.Driver.Linq;
 
 namespace Proiect_PIU
 {
@@ -90,10 +95,14 @@ namespace Proiect_PIU
             this.Controls.Add(loginPicture);
         }
 
+        public class User
+        {
+            public string name { get; set; }
+            public string password { get; set; }
+        }
         private void BtnLogin_Click(object sender, EventArgs e)
         {
-            this.Hide();
-
+            
             MainForm c = new MainForm();
             //Database.Connection();
             //Database.Interogare("name", "password");

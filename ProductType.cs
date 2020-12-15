@@ -97,9 +97,6 @@ namespace Proiect_PIU
             this.companyCbx.Name = "Company";
             this.companyCbx.Size = new Size(200, 50);
             this.companyCbx.Font = cbxFont;
-            this.companyCbx.Items.Add("Emag");
-            this.companyCbx.Items.Add("Altex");
-            this.companyCbx.Items.Add("Flanco");
             this.companyCbx.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             this.companyCbx.AutoCompleteSource = AutoCompleteSource.ListItems;
 
@@ -256,6 +253,10 @@ namespace Proiect_PIU
             if (this.productTypeCbx.GetItemText(this.productTypeCbx.SelectedItem)=="Smartphone")
             {
                 ShowCbx();
+                this.companyCbx.Items.Add("Flanco");
+                this.companyCbx.Items.Add("Altex");
+                this.companyCbx.Items.Add("Emag");
+
                 this.modelNameCbx.Items.Add("Samsung Galaxy S8");
                 this.modelNameCbx.Items.Add("Iphone 12");
 
@@ -294,6 +295,10 @@ namespace Proiect_PIU
             else if (this.productTypeCbx.GetItemText(this.productTypeCbx.SelectedItem) == "Laptop")
             {
                 ShowCbx();
+                this.companyCbx.Items.Add("Flanco");
+                this.companyCbx.Items.Add("Altex");
+                this.companyCbx.Items.Add("Emag");
+
                 this.modelNameCbx.Items.Add("Asus VivoBook");
                 this.modelNameCbx.Items.Add("Macbook 3");
 
@@ -332,6 +337,16 @@ namespace Proiect_PIU
         }
         private void BtnSave_Click(object sender, EventArgs e)
         {
+            StreamWriter sw = new StreamWriter(@"..\..\Resources\testdata.csv", true);
+            foreach (Control control in this.Controls)
+            {
+                if(control is ComboBox)
+                {
+                    sw.Write(control.Text);
+                    sw.Write(", ");
+                }
+            }
+            sw.Close();
             MessageBox.Show("Saved product");
         }
 
@@ -363,6 +378,7 @@ namespace Proiect_PIU
                     control.Text = "";
                 }
             }
+            this.companyCbx.Items.Clear();
             this.modelNameCbx.Items.Clear();
             this.internalStorageCbx.Items.Clear();
             this.ramCbx.Items.Clear();
