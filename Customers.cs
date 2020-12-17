@@ -201,18 +201,7 @@ namespace Proiect_PIU
             this.phoneLabelInvoice.Text = "";
             this.addressLabelInvoice.Text = "";
             this.productLabelInvoice.Text = "";
-            // Din Tutorial
-
-            //TXTextControl.LoadSettings ls = new TXTextControl.LoadSettings();
-            //ls.ApplicationFieldFormat = TXTextControl.ApplicationFieldFormat.MSWord;
-
-            //mailMerge1.TextComponent = textControl1;
-            //textControl1.Load("invoice.docx", TXTextControl.StreamType.WordprocessingML, ls);
-            //DataSet ds = new DataSet();
-            //ds.ReadXml("invoice.xml");
-
-            //mailMerge1.MergeBlocks(ds);
-            //mailMerge1.Merge(ds.Tables["invoice"], false);
+            
 
             if(name.Text != "" && email.Text != "" && phoneNumber.Text != "" && address.Text != "" && product.Text != "")
             {

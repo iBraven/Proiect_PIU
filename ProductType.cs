@@ -27,6 +27,8 @@ namespace Proiect_PIU
         private ComboBox frontCameraCbx = new ComboBox();
         private Label priceLabel = new Label();
         private ComboBox priceCbx = new ComboBox();
+        private Label quantityLabel = new Label();
+        private ComboBox quantityCbx = new ComboBox();
         private Button btnSave = new Button();
 
         private Label title = new Label();
@@ -204,6 +206,20 @@ namespace Proiect_PIU
             this.priceCbx.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             this.priceCbx.AutoCompleteSource = AutoCompleteSource.ListItems;
 
+
+            //quantity
+            this.quantityLabel.Location = new Point(150, 550);
+            this.quantityLabel.Size = new Size(200, 20);
+            this.quantityLabel.Text = "Quantity: ";
+            this.quantityLabel.Font = labelFont;
+
+            this.quantityCbx.Location = new Point(150, 580);
+            this.quantityCbx.Name = "Quantity";
+            this.quantityCbx.Size = new Size(200, 50);
+            this.quantityCbx.Font = cbxFont;
+            this.quantityCbx.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            this.quantityCbx.AutoCompleteSource = AutoCompleteSource.ListItems;
+
             Image buttonBackground = Image.FromFile(@"..\..\Resources\butonBackground.jfif");
 
             //SAVE btn
@@ -240,6 +256,8 @@ namespace Proiect_PIU
             this.Controls.Add(frontCameraCbx);
             this.Controls.Add(priceLabel);
             this.Controls.Add(priceCbx);
+            this.Controls.Add(quantityLabel);
+            this.Controls.Add(quantityCbx);
             this.Controls.Add(btnSave);
         }
 
@@ -338,6 +356,7 @@ namespace Proiect_PIU
         private void BtnSave_Click(object sender, EventArgs e)
         {
             StreamWriter sw = new StreamWriter(@"..\..\Resources\testdata.csv", true);
+            sw.WriteLine();
             foreach (Control control in this.Controls)
             {
                 if(control is ComboBox)
@@ -387,6 +406,7 @@ namespace Proiect_PIU
             this.rearCameraCbx.Items.Clear();
             this.frontCameraCbx.Items.Clear();
             this.priceCbx.Items.Clear();
+            this.quantityCbx.Items.Clear();
         }
 
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
