@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -55,6 +56,7 @@ namespace Proiect_PIU
             this.passwordBox.Location = new Point(250, 150);
             this.passwordBox.Font = font;
             this.passwordBox.Size = new Size(175, 25);
+            this.passwordBox.PasswordChar = '*';
 
 
             this.btnLogin.Size = new Size(125, 40);
@@ -68,6 +70,7 @@ namespace Proiect_PIU
             this.btnLogin.Font = font2;
             Image buttonBackground = Image.FromFile(@"..\..\Resources\butonBackground.jfif");
             this.btnLogin.BackgroundImage = buttonBackground;
+            this.AcceptButton = this.btnLogin;
 
             this.welcomeLabel.Text = "Welcome";
             this.welcomeLabel.Font = welcomeFont;
@@ -106,6 +109,7 @@ namespace Proiect_PIU
         private void BtnLogin_Click(object sender, EventArgs e)
         {
             
+
             MainForm c = new MainForm();
             StreamReader reader = new StreamReader(@"..\..\Resources\adminData.csv");
             List<string> data = new List<string>();
@@ -118,6 +122,7 @@ namespace Proiect_PIU
             }
             if(usernameBox.Text == data[1].Split(',')[0] && passwordBox.Text == data[1].Split(',')[1])
             {
+                this.Hide();
                 c.Show();
             }
             else
@@ -125,6 +130,7 @@ namespace Proiect_PIU
                 MessageBox.Show("Incorrect user and/or password!");
             }
         }
+
 
     }
 }

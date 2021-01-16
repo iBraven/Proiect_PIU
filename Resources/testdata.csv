@@ -1,4 +1,8 @@
-Laptop, Altex, Asus VivoBook, 512GB, 8 RAM, 18.3 inch, No, , , 3250, Laptop, Altex, Macbook 3, , , , , , , , Laptop, Flanco, Asus VivoBook, 256GB, , , , , , , 
-
-Smartphone, Emag, Iphone 12, , , , , , , , 
-Smartphone, Emag, Iphone 12, 256GB, , , , , , , 
+Type,Company,Model,InternalStorage,RAM ,Display,FingerprintSensor,RearCamera,FrontCamera,Price,Quantity,
+Smartphone, Altex, Iphone 12, 64GB, 2 RAM, 5.5 inch, Yes, 8 MP, 12 MP,2000,5,
+Laptop, Emag, Macbook 3, 512GB, 8 RAM, 15.5 inch, Yes, , ,10000,15, 
+Laptop, Emag, Asus VivoBook, 256GB, 16 RAM, 18.3 inch, No, , ,10000,8, 
+Smartphone, Flanco, Samsung Galaxy S8, 64GB, 8 RAM, 5.8 inch, No, 8 MP, 4 MP,2500,20, 
+Laptop, Altex, Asus VivoBook, 512GB, 8 RAM, 17 inch, No, , ,5000,7, 
+Laptop, Altex, Macbook 3, 512GB, 8 RAM, 17 inch, Yes, , ,2800,15, 
+Smartphone, Emag, Samsung Galaxy S8, 128GB, 8 RAM, 5 inch, No, 16 MP, 4 MP, 2000, 20, 

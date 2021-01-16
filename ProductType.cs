@@ -309,6 +309,9 @@ namespace Proiect_PIU
                 this.priceCbx.Items.Add("2000");
                 this.priceCbx.Items.Add("2500");
 
+                this.priceLabel.Location = new Point(950, 450);
+                this.priceCbx.Location = new Point(950, 480);
+
             }
             else if (this.productTypeCbx.GetItemText(this.productTypeCbx.SelectedItem) == "Laptop")
             {
@@ -355,18 +358,35 @@ namespace Proiect_PIU
         }
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            StreamWriter sw = new StreamWriter(@"..\..\Resources\testdata.csv", true);
-            sw.WriteLine();
+            bool ok = true;
+
             foreach (Control control in this.Controls)
             {
-                if(control is ComboBox)
+                if (control is ComboBox && string.IsNullOrEmpty(control.Text) && control.Visible)
                 {
-                    sw.Write(control.Text);
-                    sw.Write(", ");
+                    ok = false;
                 }
             }
-            sw.Close();
-            MessageBox.Show("Saved product");
+
+            if (ok == true)
+            {
+                StreamWriter sw = new StreamWriter(@"..\..\Resources\testdata.csv", true);
+                foreach (Control control in this.Controls)
+                {
+                    if (control is ComboBox)
+                    {
+                        sw.Write(control.Text);
+                        sw.Write(", ");
+                    }
+                }
+                sw.WriteLine();
+                sw.Close();
+                MessageBox.Show("Saved product!");
+            }
+            else
+            {
+                MessageBox.Show("Complete all fields!");
+            }
         }
 
         private void HideCbx()
@@ -409,9 +429,5 @@ namespace Proiect_PIU
             this.quantityCbx.Items.Clear();
         }
 
-        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Application.Exit();
-        }
     }
 }
