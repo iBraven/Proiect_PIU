@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using MongoDB.Bson;
 using MongoDB.Driver;
@@ -104,9 +107,23 @@ namespace Proiect_PIU
         {
             
             MainForm c = new MainForm();
-            //Database.Connection();
-            //Database.Interogare("name", "password");
-            c.Show();
+            StreamReader reader = new StreamReader(@"..\..\Resources\adminData.csv");
+            List<string> data = new List<string>();
+            while (!reader.EndOfStream)
+            {
+                var line = reader.ReadLine();
+                var values = line.Split(';');
+
+                data.Add(values[0]);
+            }
+            if(usernameBox.Text == data[1].Split(',')[0] && passwordBox.Text == data[1].Split(',')[1])
+            {
+                c.Show();
+            }
+            else
+            {
+                MessageBox.Show("Incorrect user and/or password!");
+            }
         }
 
     }
