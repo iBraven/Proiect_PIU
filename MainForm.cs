@@ -139,5 +139,10 @@ namespace Proiect_PIU
             newForm.BringToFront();
             newForm.Show();
         }
+
+        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

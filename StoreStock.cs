@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace Proiect_PIU
@@ -14,12 +17,25 @@ namespace Proiect_PIU
         private Label title = new Label();
         private PictureBox stockPicture = new PictureBox();
 
-
+        List<string[]> rows = File.ReadAllLines(@"..\..\Resources\testdata.csv").Select(x => x.Split(',')).ToList();
         public StoreStock()
         {
             InitializeComponent();
             this.stockPanel1.Paint += new PaintEventHandler(this.StockPanel1_Paint);
             this.stockPanel2.Paint += new PaintEventHandler(this.StockPanel2_Paint);
+
+        }
+
+        private void getProducts()
+        {
+            List<string[]> rows = File.ReadAllLines(@"..\..\Resources\testdata.csv").Select(x => x.Split(',')).ToList();
+            foreach (var row in rows)
+            {               
+                for (int i = 0; i < row.Length; ++i)
+                {            
+                    //MessageBox.Show(row[i]);
+                }
+            }
         }
 
         private void StoreStock_Load(object sender, EventArgs e)
@@ -76,6 +92,24 @@ namespace Proiect_PIU
             this.Controls.Add(stockPicture);
             this.Controls.Add(stockPanel1);
             this.Controls.Add(stockPanel2);
+
+            string products = String.Empty;
+            DataTable dt = ConvertCSVtoDataTable(@"..\..\Resources\testdata.csv");
+            if (dt.Rows.Count > 0)
+            {
+             
+                    foreach(DataRow row in dt.Rows)
+                    {
+                        foreach (DataColumn column in dt.Columns)
+                        {
+                            products += (Convert.ToString(row[column]));
+                        }
+                        products+=System.Environment.NewLine;
+                            
+                    }
+
+            }
+            MessageBox.Show(products);
         }
 
         private void StockPanel1_Paint(object sender, PaintEventArgs e)
@@ -96,5 +130,35 @@ namespace Proiect_PIU
             Color.Black, 1, ButtonBorderStyle.Solid);// bottom
             stockPanel2.BackColor = Color.LightGray;
         }
+
+        public static DataTable ConvertCSVtoDataTable(string strFilePath)
+        {
+            DataTable dt = new DataTable();
+            using (StreamReader sr = new StreamReader(strFilePath))
+            {
+                string[] headers = sr.ReadLine().Split(',');
+                foreach (string header in headers)
+                {
+                    dt.Columns.Add(header);
+                    
+                }
+                while (!sr.EndOfStream)
+                {
+                    string[] rows = sr.ReadLine().Split(',');
+                    DataRow dr = dt.NewRow();
+                    for (int i = 0; i < headers.Length; i++)
+                    {
+                        dr[i] = rows[i];
+                    }
+                    dt.Rows.Add(dr);
+                }
+
+            }
+
+
+            return dt;
+        }
+
+        
     }
 }

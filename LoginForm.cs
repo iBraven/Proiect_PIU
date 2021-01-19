@@ -1,6 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data;
 using System.Drawing;
+using System.IO;
+using System.Linq;
 using System.Windows.Forms;
+using MongoDB.Bson;
+using MongoDB.Driver;
+using MongoDB.Driver.Builders;
+using MongoDB.Driver.GridFS;
+using MongoDB.Driver.Linq;
 
 namespace Proiect_PIU
 {
@@ -47,6 +56,7 @@ namespace Proiect_PIU
             this.passwordBox.Location = new Point(250, 150);
             this.passwordBox.Font = font;
             this.passwordBox.Size = new Size(175, 25);
+            this.passwordBox.PasswordChar = '*';
 
 
             this.btnLogin.Size = new Size(125, 40);
@@ -60,6 +70,7 @@ namespace Proiect_PIU
             this.btnLogin.Font = font2;
             Image buttonBackground = Image.FromFile(@"..\..\Resources\butonBackground.jfif");
             this.btnLogin.BackgroundImage = buttonBackground;
+            this.AcceptButton = this.btnLogin;
 
             this.welcomeLabel.Text = "Welcome";
             this.welcomeLabel.Font = welcomeFont;
@@ -90,15 +101,36 @@ namespace Proiect_PIU
             this.Controls.Add(loginPicture);
         }
 
+        public class User
+        {
+            public string name { get; set; }
+            public string password { get; set; }
+        }
         private void BtnLogin_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            
 
             MainForm c = new MainForm();
-            //Database.Connection();
-            //Database.Interogare("name", "password");
-            c.Show();
+            StreamReader reader = new StreamReader(@"..\..\Resources\adminData.csv");
+            List<string> data = new List<string>();
+            while (!reader.EndOfStream)
+            {
+                var line = reader.ReadLine();
+                var values = line.Split(';');
+
+                data.Add(values[0]);
+            }
+            if(usernameBox.Text == data[1].Split(',')[0] && passwordBox.Text == data[1].Split(',')[1])
+            {
+                this.Hide();
+                c.Show();
+            }
+            else
+            {
+                MessageBox.Show("Incorrect user and/or password!");
+            }
         }
+
 
     }
 }

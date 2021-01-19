@@ -27,6 +27,8 @@ namespace Proiect_PIU
         private ComboBox frontCameraCbx = new ComboBox();
         private Label priceLabel = new Label();
         private ComboBox priceCbx = new ComboBox();
+        private Label quantityLabel = new Label();
+        private ComboBox quantityCbx = new ComboBox();
         private Button btnSave = new Button();
 
         private Label title = new Label();
@@ -97,9 +99,6 @@ namespace Proiect_PIU
             this.companyCbx.Name = "Company";
             this.companyCbx.Size = new Size(200, 50);
             this.companyCbx.Font = cbxFont;
-            this.companyCbx.Items.Add("Emag");
-            this.companyCbx.Items.Add("Altex");
-            this.companyCbx.Items.Add("Flanco");
             this.companyCbx.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             this.companyCbx.AutoCompleteSource = AutoCompleteSource.ListItems;
 
@@ -207,6 +206,20 @@ namespace Proiect_PIU
             this.priceCbx.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             this.priceCbx.AutoCompleteSource = AutoCompleteSource.ListItems;
 
+
+            //quantity
+            this.quantityLabel.Location = new Point(150, 550);
+            this.quantityLabel.Size = new Size(200, 20);
+            this.quantityLabel.Text = "Quantity: ";
+            this.quantityLabel.Font = labelFont;
+
+            this.quantityCbx.Location = new Point(150, 580);
+            this.quantityCbx.Name = "Quantity";
+            this.quantityCbx.Size = new Size(200, 50);
+            this.quantityCbx.Font = cbxFont;
+            this.quantityCbx.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            this.quantityCbx.AutoCompleteSource = AutoCompleteSource.ListItems;
+
             Image buttonBackground = Image.FromFile(@"..\..\Resources\butonBackground.jfif");
 
             //SAVE btn
@@ -243,6 +256,8 @@ namespace Proiect_PIU
             this.Controls.Add(frontCameraCbx);
             this.Controls.Add(priceLabel);
             this.Controls.Add(priceCbx);
+            this.Controls.Add(quantityLabel);
+            this.Controls.Add(quantityCbx);
             this.Controls.Add(btnSave);
         }
 
@@ -256,6 +271,10 @@ namespace Proiect_PIU
             if (this.productTypeCbx.GetItemText(this.productTypeCbx.SelectedItem)=="Smartphone")
             {
                 ShowCbx();
+                this.companyCbx.Items.Add("Flanco");
+                this.companyCbx.Items.Add("Altex");
+                this.companyCbx.Items.Add("Emag");
+
                 this.modelNameCbx.Items.Add("Samsung Galaxy S8");
                 this.modelNameCbx.Items.Add("Iphone 12");
 
@@ -290,10 +309,17 @@ namespace Proiect_PIU
                 this.priceCbx.Items.Add("2000");
                 this.priceCbx.Items.Add("2500");
 
+                this.priceLabel.Location = new Point(950, 450);
+                this.priceCbx.Location = new Point(950, 480);
+
             }
             else if (this.productTypeCbx.GetItemText(this.productTypeCbx.SelectedItem) == "Laptop")
             {
                 ShowCbx();
+                this.companyCbx.Items.Add("Flanco");
+                this.companyCbx.Items.Add("Altex");
+                this.companyCbx.Items.Add("Emag");
+
                 this.modelNameCbx.Items.Add("Asus VivoBook");
                 this.modelNameCbx.Items.Add("Macbook 3");
 
@@ -332,7 +358,35 @@ namespace Proiect_PIU
         }
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Saved product");
+            bool ok = true;
+
+            foreach (Control control in this.Controls)
+            {
+                if (control is ComboBox && string.IsNullOrEmpty(control.Text) && control.Visible)
+                {
+                    ok = false;
+                }
+            }
+
+            if (ok == true)
+            {
+                StreamWriter sw = new StreamWriter(@"..\..\Resources\testdata.csv", true);
+                foreach (Control control in this.Controls)
+                {
+                    if (control is ComboBox)
+                    {
+                        sw.Write(control.Text);
+                        sw.Write(", ");
+                    }
+                }
+                sw.WriteLine();
+                sw.Close();
+                MessageBox.Show("Saved product!");
+            }
+            else
+            {
+                MessageBox.Show("Complete all fields!");
+            }
         }
 
         private void HideCbx()
@@ -363,6 +417,7 @@ namespace Proiect_PIU
                     control.Text = "";
                 }
             }
+            this.companyCbx.Items.Clear();
             this.modelNameCbx.Items.Clear();
             this.internalStorageCbx.Items.Clear();
             this.ramCbx.Items.Clear();
@@ -371,11 +426,8 @@ namespace Proiect_PIU
             this.rearCameraCbx.Items.Clear();
             this.frontCameraCbx.Items.Clear();
             this.priceCbx.Items.Clear();
+            this.quantityCbx.Items.Clear();
         }
 
-        private void Form2_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Application.Exit();
-        }
     }
 }
